@@ -1,0 +1,101 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+.bill-container{
+    padding:5px 50px;
+    font-family: "Poppins",Arial, Helvetica, sans-serif;
+    font-weight: 400;
+}
+.bill-container h1{
+    text-align: center;
+}
+.bill-container table{
+    width:100%;
+    font-size: 18px;
+    border:1px solid black;
+}
+.bill-container tr{
+    width:100%;
+    display: grid;
+    grid-template-columns: 25% 25% 25% 25%;
+    text-align: center;
+}
+.bill-container td{
+    text-align: center;
+}
+.bill-container thead td{
+    background-color: #E8E9EB;
+    font-weight: 600;
+}
+.bill-container td{
+    border:1px solid black;
+    padding:5px;
+}
+.bill-container button{
+    height:40px;
+    padding:10px;
+    font-size: 18px;
+    font-weight: 600;
+    color:white;
+    background-color: #007bff;
+    border:none;
+    border-radius: 15px;
+    
+}
+.bill-container button:hover{
+
+    cursor: pointer;
+}
+.bill-container .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+  }
+  
+.bill-container .overlay-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+  }
+
+.bill-container .notification-popup{
+    padding-left:50px;
+    color:red;
+    font-size: large;
+    font-weight: 600;
+}
+.bill-container .bottom{
+    display: flex;
+    justify-content: space-evenly;
+    padding:20px;
+}
+.bill-container .bottom span{
+    padding: 20px;
+}
+@media only screen and (max-width:640px)
+{
+    .bill-container{
+        padding: 0;
+    }
+}
+@media only screen and (max-width:460px)
+{
+    .bill-container table th , .bill-container table td
+    {
+        padding:8px 0;
+        font-size: 0.8rem;
+    }
+    .bill-container h1{
+        font-size: 1.5rem;
+    }
+    
+}
