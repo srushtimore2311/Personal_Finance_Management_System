@@ -1,5 +1,6 @@
 package com.infosys.service;
 
+import java.math.BigDecimal;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,23 +16,27 @@ public class CardServiceImp implements CardService {
 		return cardRepo.save(card);
 	}
 	
+	
 	@Override
 	public List<Card> getCardsByUsername(String username){
 		return cardRepo.findByUsername(username);
 	}
 	
 	@Override
-	public void updateCardAmount(String accountNumber, double newTotalAmount) {
-	    System.out.println("Finding card with number: " + accountNumber);
-	    Card existingCard = cardRepo.findByAccountNumber(accountNumber);
+public void updateCardAmount(String accountNumber, double newTotalAmount) {
+    System.out.println("Finding card with number: " + accountNumber);
+    Card existingCard = cardRepo.findByAccountNumber(accountNumber);
 
-	    if (existingCard != null) {
-	        existingCard.setAmount(existingCard.getAmount()+(int) newTotalAmount);
-	        cardRepo.save(existingCard);
-	        System.out.println("Card updated successfully.");
-	    } else {
-	        throw new RuntimeException("Card with number " + accountNumber + " not found.");
-	    }
-	}
+    if (existingCard != null) {
+        existingCard.setAmount(
+            existingCard.getAmount().add(BigDecimal.valueOf(newTotalAmount))
+        );
+        cardRepo.save(existingCard); // Ensure it's updating, not inserting
+        System.out.println("Card updated successfully.");
+    } else {
+        throw new RuntimeException("Card with number " + accountNumber + " not found.");
+    }
+}
+
 
 }

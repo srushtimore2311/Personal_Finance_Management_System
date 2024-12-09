@@ -15,7 +15,7 @@ public class Card {
 
     private String username;
 
-    @Column(unique = true)
+    @Column(name = "accountNumber", unique = true, nullable = false)
     private String accountNumber;
 
     private String cardHolder;
