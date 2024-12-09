@@ -8,7 +8,6 @@ import expense from "./image/menu.png";
 import goals from "./image/target.png";
 import profile from "./image/user.png";
 import signout from "./image/exit.png";
-import "./Workspace.css";
 import { UserContext } from "./UserContext";
 const Workspace = () => {
     const { username ,setUsername} = useContext(UserContext);

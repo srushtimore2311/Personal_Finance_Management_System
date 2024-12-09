@@ -5,7 +5,6 @@ import arrow from './image/right arrow.png';
 import cashback from './image/group.png';
 import secure from './image/speaker.png';
 import deposit from './image/money.png';
-import './Launchpage.css';
 const Launchpage=()=>{
   return(<React.Fragment>
       <div className="launchpage">

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import './Goals.css';
 import { UserContext } from './UserContext';
 import axios from 'axios';
 

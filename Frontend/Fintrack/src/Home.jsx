@@ -2,7 +2,7 @@ import React ,{useState} from "react";
 import Header from "./Header";
 import Workspace from "./Workspace";
 import Contents from "./Contents";
-import "./Home.css";
+
 const Home=()=>{
     const [buttonColor, setButtonColor] = useState('');
 

@@ -1,7 +1,6 @@
 import React, { useContext, useState } from "react";
 import logo from "./image/logo_black.png";
 import notify from "./image/bell.png";
-import "./Header.css";
 import { UserContext } from "./UserContext";
 import axios from "axios";
 import signout from './image/exit.png';

@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect, useMemo } from 'react';
-import './Bill.css';
 import { UserContext } from './UserContext';
 import axios from 'axios';
 

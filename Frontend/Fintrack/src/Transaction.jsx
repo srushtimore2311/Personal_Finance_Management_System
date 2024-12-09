@@ -1,5 +1,4 @@
 import React, { useContext, useState, useEffect } from 'react';
-import './Transaction.css';
 import { UserContext } from './UserContext';
 import axios from 'axios';
 

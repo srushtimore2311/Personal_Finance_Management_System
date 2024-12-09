@@ -1,6 +1,5 @@
 import React, { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
-import './Signup.css';
 import axios from 'axios';
 
 const Signup = () => {

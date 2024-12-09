@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useContext } from 'react';
-import './Dashboard.css';
 import { UserContext } from './UserContext';
 import axios from 'axios';
 import { Bar, Pie } from 'react-chartjs-2';
