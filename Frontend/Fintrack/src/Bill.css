@@ -10,19 +10,20 @@
 .bill-container table{
     width:100%;
     font-size: 18px;
-    border:1px solid black;
+  
 }
 .bill-container tr{
     width:100%;
     display: grid;
     grid-template-columns: 25% 25% 25% 25%;
     text-align: center;
+    background-color: rgba(191, 207, 224, 0.6);
 }
 .bill-container td{
     text-align: center;
 }
 .bill-container thead td{
-    background-color: #E8E9EB;
+    background-color: rgba(44, 107, 175, 0.6);
     font-weight: 600;
 }
 .bill-container td{
@@ -35,7 +36,7 @@
     font-size: 18px;
     font-weight: 600;
     color:white;
-    background-color: #007bff;
+    background-color: #18256b; 
     border:none;
     border-radius: 15px;
     

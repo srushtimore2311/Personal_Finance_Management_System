@@ -22,7 +22,7 @@
 }
 .login-content{
     width: 60%;
-    background-color: #410200;
+    background: linear-gradient(145deg, rgba(51, 147, 250, 0.6), #051338);
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
@@ -51,7 +51,7 @@
 }
 .register-content button{
     width:60%;
-    background-color: #410200;
+    background: linear-gradient(145deg, rgba(51, 147, 250, 0.6), #051338);
     height:3rem;
     font-family: sans-serif;
     font:18px bolder;
@@ -77,7 +77,7 @@
 .login-content button{
     width:60%;
     height:3rem;
-    background-color: #410200;
+    background: linear-gradient(145deg, rgba(51, 147, 250, 0.6), #051338);
     font-family: sans-serif;
     font:18px bolder;
     color: white;

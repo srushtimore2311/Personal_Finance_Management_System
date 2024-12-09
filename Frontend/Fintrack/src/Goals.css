@@ -37,7 +37,7 @@
 .goal-shape {
   width: 30px;
   height: 30px;
-  background-color: #007bff;
+  background-color: #18256b; 
   border-radius: 50%;
   margin-right: 10px;
 }
@@ -62,7 +62,7 @@
 }
 
 .progress-bar {
-  background-color: #007bff;
+  background-color: #18256b; 
   height: 100%;
   border-radius: 5px;
 }
@@ -97,7 +97,7 @@
 #add-btn {
   margin-top: 20px;
   padding: 10px 15px;
-  background-color: #007bff;
+  background-color: #18256b; 
   color: white;
   border: none;
   border-radius: 5px;
@@ -107,7 +107,7 @@
 }
 
 #add-btn:hover {
-  background-color: #0056b3;
+  background-color: #cddbf7; 
 }
 .overspending {
   color: red;

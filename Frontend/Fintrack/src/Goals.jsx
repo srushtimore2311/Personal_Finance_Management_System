@@ -124,7 +124,7 @@ const Goals = () => {
             const spentAmount = calculateSpentAmount(goal.goalName);
             const remainingAmount = parseFloat(goal.goalAmount) - spentAmount;
             const spentPercentage = Math.min((spentAmount / goal.goalAmount) * 100, 100);
-            const progressBarColor = spentPercentage >= 80 ? 'red' : '#007bff';
+            const progressBarColor = spentPercentage >= 80 ? 'red' : 'rgba(0, 123, 255, 0.6)';
 
             return (
               <div className="goal-card" key={index}>

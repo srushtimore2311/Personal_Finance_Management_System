@@ -75,7 +75,7 @@ const Expenses = () => {
             {
               label: 'Debit',
               data: debitData,
-              backgroundColor: 'rgba(255, 148, 0, 0.6)',
+              backgroundColor: 'rgb(11, 23, 88) ',
             },
           ],
         });
@@ -116,7 +116,7 @@ const Expenses = () => {
             },
           },
         }}
-        height={500}
+        height={400}
         width={900}
       />
       </div>

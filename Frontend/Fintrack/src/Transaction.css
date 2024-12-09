@@ -20,7 +20,7 @@
 
 .transaction-container table {
     width: 100%;
-    border: 1px solid black;
+   
 }
 
 .transaction-container table tr {
@@ -31,7 +31,7 @@
 }
 
 .transaction-container table th {
-    background-color: #E8E9EB;
+    background-color: rgba(44, 107, 175, 0.6);
     border: 1px solid black;
     height: 35px;
     padding: 7px;
@@ -46,10 +46,12 @@
     padding: 7px;
     text-align: center;
 }
-
+.transaction-container tr {
+    background-color: rgba(191, 207, 224, 0.6);
+}
 .transaction-container button {
     padding: 8px;
-    background-color: #007bff;
+    background-color: #18256b; 
     color: white;
     border: none;
     border-radius: 4px;

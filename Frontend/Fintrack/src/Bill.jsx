@@ -36,17 +36,17 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
     try {
       const notifyDate = new Date(billDetails.billNotify);
       const formattedNotifyTime = notifyDate.toISOString().slice(0, 19); // "yyyy-MM-dd'T'HH:mm:ss"
-
+  
       if (notificationTimeout) {
         clearTimeout(notificationTimeout);
       }
-
+  
       const response = await axios.post('http://localhost:9000/home/bill/add', {
         ...billDetails,
         username: username,
         billNotify: formattedNotifyTime,
       });
-
+  
       if (response.status === 200) {
         setSuccessMsg('Bill Added Successfully');
         setFormVisible(false);
@@ -57,29 +57,33 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
           billDate: '',
           billAmount: '',
         });
-
+  
         const billResponse = await axios.get(
           `http://localhost:9000/home/bill?username=${username}`
         );
         if (billResponse.status === 200) {
-          const sortedBills = billResponse.data.sort((a, b) => new Date(b.billNotify) - new Date(a.billNotify));
+          // Filter bills to show only up to the current date (no future bills)
+          const today = new Date();
+          const filteredBills = billResponse.data.filter(bill => new Date(bill.billDate) <= today);
+          const sortedBills = filteredBills.sort((a, b) => new Date(b.billNotify) - new Date(a.billNotify));
           setBills(sortedBills);
         }
-
+  
         const currentTime = new Date().toISOString().slice(0, 19);
         const timeDifference = new Date(formattedNotifyTime) - new Date(currentTime);
-
+  
         if (timeDifference <= 0) {
           setError('Notification time is in the past. Cannot set notification.');
           return;
         }
-
+  
         const notification = {
           notifyName: `Bill: ${billDetails.billName} is due!`,
           notifyTime: formattedNotifyTime,
           username: username,
         };
-
+  
+        // Trigger notification at the set time
         const newTimeout = setTimeout(async () => {
           try {
             const notificationResponse = await axios.post(
@@ -88,12 +92,14 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
             );
             if (notificationResponse.status === 200) {
               onNotificationAdded('red');
+              // Show the bill when the time matches
+              alert(`Your bill "${billDetails.billName}" is due now!`);
             }
           } catch (error) {
             console.log(error);
           }
         }, timeDifference);
-
+  
         setNotificationTimeout(newTimeout);
       }
     } catch (error) {
@@ -107,7 +113,10 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
       try {
         const response = await axios.get(`http://localhost:9000/home/bill?username=${username}`);
         if (response.status === 200) {
-          const sortedBills = response.data.sort((a, b) => new Date(b.billNotify) - new Date(a.billNotify));
+          // Filter bills to show only up to today's date (no future bills)
+          const today = new Date();
+          const filteredBills = response.data.filter(bill => new Date(bill.billDate) <= today);
+          const sortedBills = filteredBills.sort((a, b) => new Date(b.billNotify) - new Date(a.billNotify));
           setBills(sortedBills);
         }
       } catch (err) {
@@ -115,7 +124,7 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
         setError('Failed to fetch bills.');
       }
     };
-    
+    fetchBills();
   }, [username]);
 
   const currentEntries = useMemo(() => {
@@ -154,9 +163,7 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
                   placeholder="Bill Description"
                   required
                 />
-                <label htmlFor="billNotify">
-                  Enter date and time for Notification:
-                </label>
+                <label htmlFor="billNotify">Enter date and time for Notification:</label>
                 <input
                   type="datetime-local"
                   name="billNotify"
@@ -167,7 +174,7 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
                 />
                 <label htmlFor="billDate">Enter bill date:</label>
                 <input
-                  type="date"
+                  type="datetime-local"
                   name="billDate"
                   value={billDetails.billDate}
                   onChange={handleInputChange}
@@ -193,7 +200,7 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
             <tr>
               <td>Bill Name</td>
               <td>Bill Description</td>
-              <td>Due Date</td>
+              <td>Due Date </td>
               <td>Amount</td>
             </tr>
           </thead>
@@ -203,7 +210,7 @@ const Bill = ({ onNotificationAdded, onClearNotifications }) => {
                 <tr key={index}>
                   <td>{bill.billName}</td>
                   <td>{bill.billDescription}</td>
-                  <td>{new Date(bill.billDate).toLocaleDateString()}</td>
+                  <td>{new Date(bill.billDate).toLocaleDateString()}</td> {/* Format only date */}
                   <td>{bill.billAmount}</td>
                 </tr>
               ))

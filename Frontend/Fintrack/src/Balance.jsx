@@ -174,22 +174,36 @@ const Balance = () => {
             <div className="account-list">
                 <h2>Your Accounts</h2>
                 <div className="account-items">
-                    {accounts.length > 0 ? (
-                        accounts.map((account, index) => (
-                            <div key={index} className="account-card">
-                                <p className="card-number">**** **** **** {account.accountNumber.slice(-4)}</p>
-                                <p className="card-holder">Card Holder: {account.cardHolder}</p>
-                                <p className="card-expiry">Expiry: {account.expiryDate}</p>
-                                <p className="card-cvv">CVV: {account.cvv}</p>
-                                <p className="card-amount">Amount: ₹{account.amount}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No accounts available.</p>
-                    )}
-                </div>
+    {accounts.length > 0 ? (
+        <table className="accounts-table">
+            <thead>
+                <tr>
+                    <th>Card Number</th>
+                    <th>Card Holder</th>
+                    <th>Expiry Date</th>
+                    <th>CVV</th>
+                    <th>Amount</th>
+                </tr>
+            </thead>
+            <tbody>
+                {accounts.map((account, index) => (
+                    <tr key={index}>
+                        <td>**** **** **** {account.accountNumber.slice(-4)}</td>
+                        <td>{account.cardHolder}</td>
+                        <td>{account.expiryDate}</td>
+                        <td>{account.cvv}</td>
+                        <td>₹{account.amount}</td>
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    ) : (
+        <p>No accounts available.</p>
+    )}
+</div>
+
                 <div className="total-amount">
-                    <h1>Total Amount: ₹{totalAmount}</h1>
+                    <h2>Total Amount: ₹{totalAmount}</h2>
                 </div>
             </div>
         </div>

@@ -77,7 +77,7 @@ const Dashboard = () => {
             {
               label: 'Debit',
               data: debitData,
-              backgroundColor: 'rgba(255, 148, 0, 0.6)',
+              backgroundColor: ' rgb(11, 23, 88) ',
             },
           ],
         });
@@ -113,7 +113,7 @@ const Dashboard = () => {
               datasets: [
                 {
                   data: [expenseBreakdown.credit, expenseBreakdown.debit],
-                  backgroundColor: ['rgba(0, 123, 255, 0.6)', 'rgba(255, 148, 0, 0.6)'],
+                  backgroundColor: ['rgba(0, 123, 255, 0.6)', ' rgb(11, 23, 88) '],
                 },
               ],
             }}
@@ -121,8 +121,8 @@ const Dashboard = () => {
               responsive: false,
               maintainAspectRatio: false,
             }}
-            width={200}
-            height={200}
+            width={180}
+            height={180}
           />
       </div>
       <div className='bill-board'>

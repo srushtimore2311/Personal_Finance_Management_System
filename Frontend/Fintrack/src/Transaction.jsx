@@ -16,9 +16,9 @@ const Transaction = () => {
   const [transactions, setTransactions] = useState([]);
   const [successMessage, setSuccessMessage] = useState('');
   const [accountNumbers, setAccountNumbers] = useState([]);
+  const [goalNames, setGoalNames] = useState([]);  // State for storing goal names
   const [error, setError] = useState('');
   const { username } = useContext(UserContext);
-  
   
   const [currentPage, setCurrentPage] = useState(1);
   const entriesPerPage = 10;
@@ -61,9 +61,23 @@ const Transaction = () => {
       }
     };
 
+    const fetchGoalNames = async () => {  // New function to fetch goals
+      try {
+        const response = await axios.get(`http://localhost:9000/home/goals?username=${username}`);
+        if (response.status === 200) {
+          setGoalNames(response.data.map(goal => goal.goalName));  // Store goal names in state
+        } else {
+          setError('Failed to fetch goals.');
+        }
+      } catch (error) {
+        setError('Error fetching goals. Please try again later.');
+      }
+    };
+
     if (username) {
       fetchTransactions();
       fetchAccountNumbers();
+      fetchGoalNames();  // Call the fetch goal function
     }
   }, [username]);
 
@@ -133,15 +147,20 @@ const Transaction = () => {
                   required
                 />
                 <label htmlFor="transactionGoal">Goal:</label>
-                <input 
-                  type="text" 
-                  name="goal" 
-                  value={transactionDetails.goal} 
+                <select
+                  name="goal"
+                  value={transactionDetails.goal}
                   onChange={handleChange}
-                  placeholder='Enter the Goal' 
                   required
-                />
-                 <label htmlFor="transactionAccNumber">Account Number:</label>
+                >
+                  <option value="">Select Goal</option>
+                  {goalNames.map((goalName, index) => (
+                    <option key={index} value={goalName}>
+                      {goalName}
+                    </option>
+                  ))}
+                </select>
+                <label htmlFor="transactionAccNumber">Account Number:</label>
                 <select
                   name="accountNumber"
                   value={transactionDetails.accountNumber}
@@ -209,8 +228,9 @@ const Transaction = () => {
                   <td>{transaction.accountNumber}</td>
                   <td>{transaction.transactionType}</td>
                   <td className={`${transaction.creditOrDebit === 'debit' ? 'money-spent' : 'money-received'}`}>
-                    {transaction.amount}
-                  </td>
+  ₹{transaction.amount}
+</td>
+
                 </tr>
               ))
             ) : (
@@ -242,7 +262,6 @@ const Transaction = () => {
         {error && <p className="error">{error}</p>}
         
       </div>
-
     </React.Fragment>
   );
 };

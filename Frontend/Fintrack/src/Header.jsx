@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import logo from "./image/logo.webp";
+import logo from "./image/logo_black.png";
 import notify from "./image/bell.png";
 import "./Header.css";
 import { UserContext } from "./UserContext";
@@ -171,8 +171,8 @@ const Header = ({ buttonColor, onClearNotifications }) => {
             ) : (
               <p>No notifications available</p>
             )}
-            <button onClick={deleteMapping}>Clear All</button>
-            <button onClick={toggleOverlay}>Close</button>
+            <button onClick={deleteMapping} className="clear">Clear All</button>
+            <button onClick={toggleOverlay} className="close">Close</button>
           </div>
         </div>
       )}

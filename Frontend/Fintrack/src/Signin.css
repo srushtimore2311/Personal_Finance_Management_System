@@ -27,7 +27,7 @@
 }
 .signup-content{
     width: 50%;
-    background-color: #410200;
+    background: linear-gradient(145deg, rgba(51, 147, 250, 0.6), #051338);
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
 }
@@ -49,7 +49,7 @@
 }
 .signin-content button{
     width:65%;
-    background-color: #410200;
+    background: linear-gradient(145deg, rgba(51, 147, 250, 0.6), #051338);
     height:3rem;
     font-family: sans-serif;
     font:18px bolder;
@@ -96,7 +96,7 @@
 .signup-content button{
     width:60%;
     height:3rem;
-    background-color: #410200;
+      background: linear-gradient(145deg, rgba(51, 147, 250, 0.6), #051338);
     font-family: sans-serif;
     font:18px bolder;
     color: white;

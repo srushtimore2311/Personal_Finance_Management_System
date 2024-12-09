@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import dashboard from "./image/business-analysis.png";
+import dashboard from "./image/dashboard.png";
 import balance from "./image/wallet.png";
 import transaction from "./image/transaction.png";
 import bills from "./image/bill.png";
@@ -44,14 +44,15 @@ const Workspace = () => {
                             ))}
                         </ul>
                     </nav>
+                    
                 </div>
                 <div className="account-centre">
                     <div className="accounts">
                         <div className="profile">
                             <img src={profile} alt="profile pic" />
-                            <h5>{username}</h5>
+                            <h4>{username}</h4>
                         </div>
-                        <button onClick={Signout} ><img src={signout}/></button>
+                        <button onClick={Signout} ><img  src={signout}/></button>
                     </div>
                 </div>
             </div>
